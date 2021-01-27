@@ -11,7 +11,6 @@ const Song = mongoose.model('Song', songSchema);
 const nameExists = async (name) => {
     const result = await Song.countDocuments({ name: name }).exec();
     return result > 0;
-
 }
 
 const songRepository = {
@@ -48,8 +47,8 @@ const songRepository = {
     },
 
     // Versión del anterior, en la que el ID va dentro del objeto canción
-    update(modifiedSong) {
-        return this.update(modifiedSong.id, modifiedSong);
+    update(modifiedSong) { //async-await
+        return this.update(modifiedSong.id, modifiedSong);//meter el byid
     },
     //Borra la canción cuyo id se le de como parámetro
     async delete(id) {

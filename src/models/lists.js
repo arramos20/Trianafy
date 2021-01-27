@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import Song from './songs';
+import Song from './songs';//especificar para importar el Schema para el populate
+//ver el ej10
 
 const { Schema } = mongoose;
 
