@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { isValidObjectId } from 'mongoose';
 import Song from './songs';//especificar para importar el Schema para el populate
 //ver el ej10
 
@@ -6,7 +6,9 @@ const { Schema } = mongoose;
 
 const listSchema = new Schema({
     name: String,
-    songList: [Song]
+    description: String,
+    user_id: isValidObjectId,
+    songs: [Song]
 });
 
 const List = mongoose.model('List', listSchema);

@@ -2,14 +2,16 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const songSchema = new Schema({
-    name: String,
-    length: Number
+    title: String,
+    artist: String,
+    album: String,
+    year: Number
 });
 
 const Song = mongoose.model('Song', songSchema);
 
-const nameExists = async (name) => {
-    const result = await Song.countDocuments({ name: name }).exec();
+const titleExists = async (title) => {
+    const result = await Song.countDocuments({ title: title }).exec();
     return result > 0;
 }
 
@@ -28,7 +30,7 @@ const songRepository = {
     // Inserta una nueva canción y devuelve la canción insertada
     async create(newSong) {
         const theSong = new Song({
-            name : newSong.name,
+            title : newSong.title,
             length: newSong.lenght
         });
         const result = await theSong.save();
@@ -59,5 +61,5 @@ const songRepository = {
 export  {
     Song,
     songRepository,
-    nameExists
+    titleExists
 }
